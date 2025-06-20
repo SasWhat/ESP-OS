@@ -1,90 +1,104 @@
-🧠 ESP-OS — A Serial Command-Line OS for ESP32
-A mini operating system for ESP32 that runs entirely over Serial.
-Control Wi-Fi, files, and hardware with simple shell-style commands like ping("google.com"), mkfile("log.txt", "ready"), and digwrite(13, high).
+**ESP-OS**
 
-⚡ Features
-🖥️ Serial-based command line interface (CLI)
+ESP-OS is a lightweight serial-based command-line operating system for the ESP32 microcontroller. It allows users to interact with the ESP32 over the Serial Monitor using simple shell-like commands. With ESP-OS, you can manage Wi-Fi connections, read and write files to SPIFFS, control GPIOs, and perform system diagnostics.
 
-📶 Wi-Fi setup and control using WiFiManager
+**Features**
 
-📁 File system commands using SPIFFS
+ESP-OS supports serial commands to perform tasks typically done through code. This includes setting up Wi-Fi using WiFiManager, creating and reading files, listing or deleting them, and controlling digital and analog pins. The system is extendable, so new commands can be added as needed.
 
-⚙️ GPIO control: digital I/O, PWM, analog read
+**Supported Commands
 
-🔄 Easily extendable command handler system
+System Commands:**
 
-💾 Lightweight & user-friendly — fits in under 100 KB
+help() – Lists all available commands
 
-🛠️ Commands
-🧠 System
-plaintext
-Copy
-Edit
-help()           // List all commands
-reboot()         // Restart the ESP32
-clear()          // Clear Serial output
-uptime()         // Show runtime
-free()           // Show free RAM and SPIFFS space
-📶 Wi-Fi
-plaintext
-Copy
-Edit
-wificonfig()     // Start WiFiManager portal
-resetwifi()      // Clear saved Wi-Fi
-status()         // Show connection info
-disconnect()     // Disconnect from Wi-Fi
-scan()           // List nearby networks
-ping("host")     // Ping a domain or IP
-ip()             // Show IP, gateway, DNS
-📁 File System
-plaintext
-Copy
-Edit
-mkfile("name","data")   // Create file with text
-read("file")            // Read a file
-del("file")             // Delete a file
-ls()                    // List files
-⚙️ GPIO / Hardware
-plaintext
-Copy
-Edit
-digwrite(pin, state)    // Digital output: high/low
-digread(pin)            // Read digital pin
-pwm(pin, value)         // PWM 0–255
-analogread(pin)         // Read analog value
-📷 Example Session
-plaintext
+reboot() – Restarts the ESP32
+
+clear() – Clears the Serial screen
+
+uptime() – Shows how long the ESP32 has been running
+
+free() – Displays free RAM and available SPIFFS space
+
+**Wi-Fi Commands:**
+
+wificonfig() – Starts WiFiManager captive portal to connect to a network
+
+resetwifi() – Clears saved Wi-Fi credentials
+
+status() – Displays current SSID, IP, and signal strength
+
+disconnect() – Disconnects from the current Wi-Fi network
+
+scan() – Lists available Wi-Fi networks
+
+ping("host") – Pings a domain or IP address
+
+ip() – Shows the ESP32’s IP address, gateway, and DNS
+
+**File System Commands:**
+
+mkfile("name","text") – Creates a new file and writes text
+
+read("file") – Reads the contents of a file
+
+del("file") – Deletes a specified file
+
+ls() – Lists all files stored in SPIFFS
+
+**GPIO and Hardware Commands:**
+
+digwrite(pin, state) – Sets a digital pin to HIGH or LOW
+
+digread(pin) – Reads the value of a digital pin
+
+pwm(pin, value) – Outputs PWM signal on a pin (value 0 to 255)
+
+analogread(pin) – Reads analog input from a specified pin
+
+Example Session
+scss
 Copy
 Edit
 wificonfig()
 ping("google.com")
-mkfile("hello.txt", "Welcome to ESP-OS")
-read("hello.txt")
-digwrite(2, high)
+mkfile("log.txt","System ready")
+read("log.txt")
+digwrite(13, high)
 analogread(34)
-📦 Dependencies
-Use PlatformIO and make sure this is in platformio.ini:
+Dependencies
+This project requires the following libraries:
 
-ini
+WiFiManager
+
+ESP32Ping
+
+You can install them via PlatformIO using:
+
+makefile
 Copy
 Edit
 lib_deps =
   tzapu/WiFiManager
   ESP32Ping
-🔧 Getting Started
-Clone this repo
+  
+**How to Use**
 
-Upload to your ESP32 board using PlatformIO or Arduino IDE
+Upload the project to an ESP32 board using PlatformIO or Arduino IDE.
 
-Open Serial Monitor at 115200
+Open the Serial Monitor at 115200 baud rate.
 
-Type help() and start exploring
+Type help() and press Enter to see the list of commands.
 
-💡 Roadmap
-servo(pin, angle)
+Use the commands interactively through the Serial Monitor.
 
-tone(pin, freq)
+**Future Improvements**
 
-Web-based command GUI (optional)
+Add servo control using servo(pin, angle)
 
-SPIFFS script runner: run("boot.txt")
+Add buzzer control using tone(pin, frequency)
+
+Support command scripting with run("script.txt")
+
+Optional web interface for commands
+
