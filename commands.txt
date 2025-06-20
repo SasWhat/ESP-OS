@@ -1,0 +1,32 @@
+🧠 SYSTEM COMMANDS
+Command	Description
+help()	List all available commands
+reboot()	Restart the ESP32
+clear()	Clear Serial screen
+uptime()	Show how long the ESP32 has been running
+free()	Show free RAM and free SPIFFS storage
+
+📶 WIFI COMMANDS
+Command	Description
+wificonfig()	Start WiFiManager portal to set up Wi-Fi
+resetwifi()	Clear saved Wi-Fi credentials
+status()	Show SSID, IP address, and signal strength
+disconnect()	Disconnect from current Wi-Fi
+scan()	List nearby Wi-Fi networks
+ping("host")	Ping a domain or IP and show average time
+ip()	Show local IP, gateway, and DNS
+
+📁 FILE SYSTEM (SPIFFS) COMMANDS
+Command	Description
+mkfile("file","text")	Create a file and write content
+read("file")	Display contents of a file
+del("file")	Delete a file
+ls()	List all files and their sizes
+
+⚙️ GPIO / HARDWARE COMMANDS
+Command	Description
+digwrite(pin,state)	Set a digital pin to high or low
+digread(pin)	Read the digital value from a pin
+pwm(pin,value)	Output PWM signal (0–255) on a pin
+analogread(pin)	Read analog input from a pin (returns 0–4095)
+
