@@ -1,4 +1,4 @@
-**ESP-OS**
+**ESP-OS** Version-1.0
 
 ESP-OS is a lightweight serial-based command-line operating system for the ESP32 microcontroller. It allows users to interact with the ESP32 over the Serial Monitor using simple shell-like commands. With ESP-OS, you can manage Wi-Fi connections, read and write files to SPIFFS, control GPIOs, and perform system diagnostics.
 
@@ -69,15 +69,13 @@ analogread(34)
 Dependencies
 This project requires the following libraries:
 
-WiFiManager
+_WiFiManager_
 
-ESP32Ping
+_ESP32Ping_
 
 You can install them via PlatformIO using:
+pasting the following code into the platform.ini file
 
-makefile
-Copy
-Edit
 lib_deps =
   tzapu/WiFiManager
   ESP32Ping
@@ -86,7 +84,7 @@ lib_deps =
 
 Upload the project to an ESP32 board using PlatformIO or Arduino IDE.
 
-Open the Serial Monitor at 115200 baud rate.
+Open the Serial Monitor at **115200** baud rate.
 
 Type help() and press Enter to see the list of commands.
 
